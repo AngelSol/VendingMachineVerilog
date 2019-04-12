@@ -1,0 +1,9 @@
+module test;
+
+wire Reset,CLK,Dime,Nickel,Dispense,[2:0]State;
+
+vend2 inst(Reset,CLK,Dime,Nickel,Dispense,State);
+vendtest inst2 (Reset,CLK,Dime,Nickel,Dispense,State);
+
+
+endmodule

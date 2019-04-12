@@ -1,0 +1,72 @@
+`timescale 1ns/100ps
+module vendtest();
+
+
+wire 	Dispense;
+wire [2:0]	State;
+
+
+reg Nickel,Dime,Reset,CLK;
+//bring in vending machine
+//vend2 inst(Reset,CLK,Dime,Nickel,Dispense,State);
+
+
+// clk
+initial CLK = 1'b0;
+
+always #5 CLK = !CLK;
+
+//control
+initial begin
+	Reset = 1'b1;
+	Nickel = 1'b0;
+	Dime = 1'b0;
+	
+	//three nickels
+	#4 Nickel = 1'b1;
+	#6  Nickel = 1'b0;
+	
+	#4 Nickel = 1'b1;
+	#6  Nickel = 1'b0;
+	
+	#4 Nickel = 1'b1;
+	#6  Nickel = 1'b0;
+	
+	// three dimes
+	#4 Dime = 1'b1;
+	#6  Dime = 1'b0;
+	
+	#4 Dime = 1'b1;
+	#6  Dime = 1'b0;
+	
+	#4 Dime = 1'b1;
+	#6  Dime = 1'b0;
+	
+	//reset check
+	#4 Dime = 1'b1;
+	#6  Dime = 1'b0;
+	#5 	Reset = 1'b0;
+	#20	 Reset = 1'b1;
+	
+	// dime nickel
+	#4 Dime = 1'b1;
+	#6  Dime = 1'b0;
+	#4 Nickel = 1'b1;
+	#6  Nickel = 1'b0;
+	
+	//nickel Dime
+	#4 Nickel = 1'b1;
+	#6  Nickel = 1'b0;
+	#4 Dime = 1'b1;
+	#6  Dime = 1'b0;
+	
+end 
+
+//monitor
+initial 
+	$monitor ($time, "Dispense = ", Dispense, "State = ", State);
+	
+initial 
+	#300 $finish;
+	
+endmodule

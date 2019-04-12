@@ -1,0 +1,21 @@
+|vend1
+Reset => d0.ACLR
+Reset => d1.ACLR
+Reset => d3.ACLR
+CLK => d0.CLK
+CLK => d1.CLK
+CLK => d3.CLK
+Dime => WideAnd7.IN3
+Dime => WideAnd6.IN2
+Dime => g3.IN1
+Dime => WideAnd4.IN3
+Dime => WideAnd2.IN3
+Nickel => WideAnd5.IN2
+Nickel => g3.IN0
+Nickel => WideAnd1.IN3
+Dispense <= comb~0.DB_MAX_OUTPUT_PORT_TYPE
+State[0] <= d0.DB_MAX_OUTPUT_PORT_TYPE
+State[1] <= d1.DB_MAX_OUTPUT_PORT_TYPE
+State[2] <= d3.DB_MAX_OUTPUT_PORT_TYPE
+
+
